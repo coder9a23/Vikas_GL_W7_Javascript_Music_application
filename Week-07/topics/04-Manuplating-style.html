@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .message{
+            padding: 0.5em;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        .message-success{
+            border: 1px solid green;
+            background-color: olive;
+            color: ivory;
+        }
+    </style>
+</head>
+<body>
+    <p class="message">Your email was sent!</p>
+
+
+    <script>
+        /** 
+         * Do some inline styling. Add appropriate class.
+         */
+        let message1 = document.querySelector('.message');
+        console.log(message1.style);
+
+        message1.style.fontSize = '25px';
+
+        // classList object will help us to add a class remove a class.
+        // classList.contains will check weather gien class exits or not.
+        console.log(message1.classList.contains( 'message' ));
+
+        // To add a class externally 
+        message1.classList.add( 'message-success' );
+    </script>
+</body>
+</html>

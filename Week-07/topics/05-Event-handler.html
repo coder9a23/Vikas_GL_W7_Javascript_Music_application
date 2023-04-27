@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            background-color: rgba(0, 0, 255, 0.692);
+        }
+    </style>
+</head>
+<body>
+    <button>Click me</button>
+    <a href="https://www.google.com" id="google-link">Google search page</a>
+    <input type="range" min="1" max="10" id="rating"/>
+    <span id="rating-value"></span>
+
+    <script>
+        /** 
+         * Set 'Click' handler on button. Check "this", event object 
+         * Prevent default action on 'click' of Google search page link if user does
+         * not want to navigate. 
+         * the 'input' event of inputs range input. The value property.
+         */
+        function heyBrowserDoThis( event ){
+            alert('Button was clicked')
+            console.log( this );// DOM node on which event occurs.
+            console.log( event )
+        }
+
+        const buttonHandle = document.querySelector('button');
+        buttonHandle.addEventListener('click',heyBrowserDoThis)
+
+        buttonHandle.addEventListener('click',function( event ){
+            console.log('Button was clicked');
+            console.log( this );
+            console.log( event )
+        })
+
+         document.getElementById('google-link').addEventListener('click',function( event ){
+            if(!confirm('Are you sure you want to leave our beautiful webside')){
+                event.preventDefault();
+            }
+         })
+        
+        function showValue(){
+            // get the value of the #rating input
+            const value = this.value;
+
+            // show it within #rating-value span
+            document.getElementById('rating-value').innerText = value;
+
+        }
+            // use call() to set "this" -> document.getElementById( 'rating' );
+         showValue.call( document.getElementById( 'rating' ));
+         // The name of event to handle input is 'input' itself
+        document.getElementById('rating').addEventListener('input', showValue);
+        
+    </script>
+</body>
+</html>
